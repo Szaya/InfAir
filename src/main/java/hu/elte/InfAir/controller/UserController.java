@@ -1,7 +1,7 @@
-package hu.elte.issuetracker.controller;
+package hu.elte.InfAir.controller;
 
-import hu.elte.issuetracker.model.User;
-import hu.elte.issuetracker.repository.UserRepository;
+import hu.elte.InfAir.model.User;
+import hu.elte.InfAir.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
