@@ -1,30 +1,21 @@
 package hu.elte.InfAir.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Label {
-
+public class Flight {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column
-    private String text;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "labels")
-    private List<Issue> issues;
-
 }

@@ -41,12 +41,4 @@ public class User {
     public enum Role {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<Issue> issues;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<Message> messages;
 }
