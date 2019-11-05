@@ -9,4 +9,4 @@ INSERT INTO flight (startpoint, endpoint, launch, arrival, cost, sale) VALUES ('
 INSERT INTO flight (startpoint, endpoint, launch, arrival, cost, sale) VALUES ('London', 'NewYork', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 65555, 1.0);
 INSERT INTO flight (startpoint, endpoint, launch, arrival, cost, sale) VALUES ('Budapest', 'Paris', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 65555, .0);
 
-
+INSERT INTO service (specialSeat, nexttowindow, biggerfootspace, extrasuitecase, bagcar) VALUES (TRUE, TRUE, TRUE, TRUE, TRUE);
