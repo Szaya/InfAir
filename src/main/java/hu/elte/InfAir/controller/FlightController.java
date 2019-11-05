@@ -111,7 +111,7 @@ public class FlightController {
     ) {
         Optional<Flight> oFlight = flightRepository.findById(id);
         if (oFlight.isPresent()) {
-            if (flight.getStartpoint() == null && flight.getEndpoint() == null ) {
+            if (flight.getStartpoint() == null || flight.getEndpoint() == null ) {
                 return ResponseEntity.badRequest().build();
             }
             Flight oldFlight = oFlight.get();
