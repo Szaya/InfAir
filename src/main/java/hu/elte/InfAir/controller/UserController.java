@@ -1,5 +1,6 @@
 package hu.elte.InfAir.controller;
 
+import hu.elte.InfAir.model.User;
 import hu.elte.InfAir.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

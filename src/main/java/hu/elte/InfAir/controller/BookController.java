@@ -4,12 +4,9 @@ package hu.elte.InfAir.controller;
 
 import hu.elte.InfAir.model.Book;
 import hu.elte.InfAir.repository.BookRepository;
-import hu.elte.InfAir.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -50,5 +47,25 @@ public class BookController {
             @PathVariable Integer serviceid
     ) {
         return bookRepository.findByServiceid(serviceid);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Book> createBook(
+            @RequestBody Book book
+    ) {
+        Book savedBook = bookRepository.save(book);
+        return ResponseEntity.ok(savedBook);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteBook(
+            @PathVariable Integer id
+    ) {
+        try {
+            bookRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
