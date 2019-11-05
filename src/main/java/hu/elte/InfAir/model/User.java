@@ -20,15 +20,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column
     private String name;
-
-    @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
-
+    
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
