@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface FlightRepository extends CrudRepository<Flight, Integer> {
-    Optional<Flight> findByStartpoint(String startpoint);
+    Iterable<Flight> findByStartpoint(String startpoint);
     Iterable<Flight> findAll();
 }

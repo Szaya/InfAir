@@ -22,4 +22,13 @@ public class User {
 
     @Column
     private String name;
+    
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public enum Role {
+        ROLE_OPERATOR, ROLE_USER, ROLE_ADMINISTRATOR
+    }
+
 }
