@@ -5,6 +5,7 @@ import hu.elte.InfAir.repository.ServiceRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -21,47 +22,53 @@ public class ServiceController {
     
     @Autowired
     private ServiceRepository serviceRepository;
-    
+
     @GetMapping("/{id}")
     public Optional<Service> getServiceById(
             @PathVariable Integer id
     ) {
         return serviceRepository.findById(id);
     }
-    
+
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("")
     public Iterable<Service> getServices() {
         return serviceRepository.findAll();
     }
-    
+
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/specialseat/{specialseat}")
     public Iterable<Service> getServicesBySpecialseat(
             @PathVariable Boolean specialseat
     ) {
         return serviceRepository.findBySpecialseat(specialseat);
     }
-    
+
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/nexttowindow/{nexttowindow}")
     public Iterable<Service> getServicesByNextowindow(
             @PathVariable Boolean nexttowindow
     ) {
         return serviceRepository.findByNexttowindow(nexttowindow);
     }
-    
+
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/biggerfootspace/{biggerfootspace}")
     public Iterable<Service> getServicesByBiggerfootspace(
             @PathVariable Boolean biggerfootspace
     ) {
         return serviceRepository.findByBiggerfootspace(biggerfootspace);
     }
-    
+
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/extrasuitecase/{extrasuitecase}")
     public Iterable<Service> getServicesByExtrasuitecase(
             @PathVariable Boolean extrasuitecase
     ) {
         return serviceRepository.findByExtrasuitecase(extrasuitecase);
     }
-    
+
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/bagcar/{bagcar}")
     public Iterable<Service> getServicesByBagcar(
             @PathVariable Boolean bagcar

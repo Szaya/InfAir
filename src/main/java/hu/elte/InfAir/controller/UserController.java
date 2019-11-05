@@ -4,7 +4,9 @@ import hu.elte.InfAir.model.User;
 import hu.elte.InfAir.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Optional;
 
@@ -14,6 +16,26 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+    @PostMapping("")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        Optional<User> oUser = userRepository.findByUsername(user.getUsername());
+        if (oUser.isPresent()) {
+            return ResponseEntity.badRequest().build();
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(User.Role.ROLE_USER);
+        return ResponseEntity.ok(userRepository.save(user));
+    }
+
+    @GetMapping("login")
+    public ResponseEntity login() {
+        return ResponseEntity.ok().build();
+    }
+
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/{id}")
     public Optional<User> getUserById(
             @PathVariable Integer id
@@ -21,7 +43,7 @@ public class UserController {
         return userRepository.findById(id);
     }
 
-
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("")
     public Iterable<User> getUsers() {
         return userRepository.findAll();
@@ -34,13 +56,15 @@ public class UserController {
         return userRepository.findByName(name);
     }
 
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/Username/{username}")
-    public Iterable<User> getUserByUsername(
+    public Optional<User> getUserByUsername(
             @PathVariable String username
     ) {
         return userRepository.findByUsername(username);
     }
 
+    @Secured({"ROLE_OPERATOR"})
     @GetMapping("/Role/{role}")
     public Iterable<User> getUserByRole(
             @PathVariable User.Role role
@@ -48,16 +72,9 @@ public class UserController {
         return userRepository.findByRole(role);
     }
 
-    @PostMapping("")
-    public ResponseEntity<User> createUser(
-            @RequestBody User user
-    ) {
-        User savedUser = userRepository.save(user);
-        return ResponseEntity.ok(savedUser);
-    }
-
+    @Secured({"ROLE_OPERATOR", "ROLE_USER"})
     @PatchMapping("/{id}")
-    public ResponseEntity<User> modifyFlight(
+    public ResponseEntity<User> modifyUser(
             @PathVariable Integer id,
             @RequestBody User user
     ) {
@@ -80,6 +97,7 @@ public class UserController {
         }
     }
 
+    @Secured({"ROLE_OPERATOR", "ROLE_USER"})
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(
             @PathVariable Integer id

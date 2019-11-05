@@ -6,6 +6,7 @@ import hu.elte.InfAir.model.Book;
 import hu.elte.InfAir.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -23,6 +24,7 @@ public class BookController {
         return bookRepository.findById(id);
     }
 
+    @Secured({"ROLE_OPERATOR", "ROLE_ADMINISTRATOR"})
     @GetMapping("")
     public Iterable<Book> getBooks() {
         return bookRepository.findAll();
@@ -35,6 +37,7 @@ public class BookController {
         return bookRepository.findByUserid(userid);
     }
 
+    @Secured({"ROLE_OPERATOR", "ROLE_ADMINISTRATOR"})
     @GetMapping("/Flightid/{flightid}")
     public Iterable<Book> getBookByFlightid(
             @PathVariable Integer flightid
@@ -42,6 +45,7 @@ public class BookController {
         return bookRepository.findByFlightid(flightid);
     }
 
+    @Secured({"ROLE_OPERATOR", "ROLE_ADMINISTRATOR"})
     @GetMapping("/Serviceid/{serviceid}")
     public Iterable<Book> getBookByServiceid(
             @PathVariable Integer serviceid
