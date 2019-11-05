@@ -34,7 +34,7 @@ public class Flight {
     
     @Column
     @CreationTimestamp
-    private LocalDateTime lanuch;
+    private LocalDateTime launch;
     
     @Column
     @CreationTimestamp

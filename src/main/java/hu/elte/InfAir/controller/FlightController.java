@@ -2,6 +2,7 @@ package hu.elte.InfAir.controller;
 
 import hu.elte.InfAir.model.Flight;
 import hu.elte.InfAir.repository.FlightRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,11 +21,61 @@ public class FlightController {
     
     @Autowired
     private FlightRepository flightRepository;
-
+    
+    @GetMapping("/{id}")
+    public Optional<Flight> getFlightById(
+            @PathVariable Integer id
+    ) {
+        return flightRepository.findById(id);
+    }
+    
     @GetMapping("")
     public Iterable<Flight> getFlights() {
         return flightRepository.findAll();
     }
+    
+    @GetMapping("/Startpoint/{startpoint}")
+    public Iterable<Flight> getFlightByStartpoint(
+            @PathVariable String startpoint
+    ) {
+        return flightRepository.findByStartpoint(startpoint);
+    }
+    
+    @GetMapping("/Endpoint/{endpoint}")
+    public Iterable<Flight> getFlightByEndpoint(
+            @PathVariable String endpoint
+    ) {
+        return flightRepository.findByEndpoint(endpoint);
+    }
+   
+    @GetMapping("/Launch/{launch}")
+    public Iterable<Flight> getFlightByLaunch(
+            @PathVariable String launch
+    ) {
+        return flightRepository.findByLaunch(launch);
+    }
+    
+    @GetMapping("/Arrival/{arrival}")
+    public Iterable<Flight> getFlightByArrival(
+            @PathVariable String arrival
+    ) {
+        return flightRepository.findByArrival(arrival);
+    }
+    
+    @GetMapping("/Cost/{cost}")
+    public Iterable<Flight> getFlightByCost(
+            @PathVariable Integer cost
+    ) {
+        return flightRepository.findByCost(cost);
+    } 
+    
+    @GetMapping("/Sale/{sale}")
+    public Iterable<Flight> getFlightBySale(
+            @PathVariable Float sale
+    ) {
+        return flightRepository.findBySale(sale);
+    }
+      
     
     @PostMapping("")
     public ResponseEntity<Flight> createFlight(
@@ -32,6 +83,53 @@ public class FlightController {
     ) {
         Flight savedFlight = flightRepository.save(flight);
         return ResponseEntity.ok(savedFlight);
+    }
+        
+    @PatchMapping("/{id}/sale/{sale}")
+    public ResponseEntity<Flight> modifyFlight(
+            @PathVariable Integer id,
+            @PathVariable Float sale
+    ) {
+        Optional<Flight> oFlight = flightRepository.findById(id);
+        if (oFlight.isPresent()) {
+            if (sale <= 0  || sale > 1) {
+                return ResponseEntity.badRequest().build();
+            }
+            Flight flight = oFlight.get();
+            flight.setSale(sale);
+            Flight savedFlight = flightRepository.save(flight);
+            return ResponseEntity.ok(savedFlight);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PatchMapping("/{id}")
+    public ResponseEntity<Flight> modifyFlight(
+            @PathVariable Integer id,
+            @RequestBody Flight flight
+    ) {
+        Optional<Flight> oFlight = flightRepository.findById(id);
+        if (oFlight.isPresent()) {
+            if (flight.getStartpoint() == null && flight.getEndpoint() == null ) {
+                return ResponseEntity.badRequest().build();
+            }
+            Flight oldFlight = oFlight.get();
+            
+            oldFlight.setStartpoint(flight.getStartpoint());
+            oldFlight.setEndpoint(flight.getEndpoint());
+            oldFlight.setLaunch(flight.getLaunch());
+            oldFlight.setArrival(flight.getArrival());
+            oldFlight.setCost(flight.getCost());
+            oldFlight.setSale(flight.getSale());
+                    
+            Flight savedFlight = flightRepository.save(oldFlight);
+
+
+            return ResponseEntity.ok(savedFlight);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     
     @DeleteMapping("/{id}")
@@ -46,4 +144,3 @@ public class FlightController {
         }
     }
 }
-
