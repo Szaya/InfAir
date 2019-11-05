@@ -2,7 +2,6 @@ package hu.elte.InfAir.repository;
 
 
 import hu.elte.InfAir.model.Book;
-import hu.elte.InfAir.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

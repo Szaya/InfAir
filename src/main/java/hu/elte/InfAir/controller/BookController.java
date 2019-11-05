@@ -3,7 +3,6 @@ package hu.elte.InfAir.controller;
 
 
 import hu.elte.InfAir.model.Book;
-import hu.elte.InfAir.model.User;
 import hu.elte.InfAir.repository.BookRepository;
 import hu.elte.InfAir.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
