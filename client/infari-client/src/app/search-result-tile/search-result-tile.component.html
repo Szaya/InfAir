@@ -18,14 +18,15 @@
             <div>
                 <mat-grid-tile
                     [style.background]="'Gray'">
-                    {{flight.startpoint}}
+                    {{flight.cost}}
+                    {{flight.sale}}
                 </mat-grid-tile>
             </div>
             <div>
                 <mat-grid-tile
                     [colspan]="2"
                     [style.background]="'Gray'">
-                    <button mat-raised-button color="accent">Book</button>
+                    <button mat-raised-button color="accent" (click)="showBookDialog()">Book</button>
                 </mat-grid-tile>
             </div>
         </mat-grid-list>

@@ -16,11 +16,16 @@ import {MatCardModule} from '@angular/material/card';
 import { HttpClientModule } from "@angular/common/http";
 import { FlightService } from './flight.service';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { SearchResultTileComponent } from './search-result-tile/search-result-tile.component';
+import { SearchResultTileComponent, BookDialog } from './search-result-tile/search-result-tile.component';
 import { HomePagePlaceholderComponent } from './home-page-placeholder/home-page-placeholder.component';
 import { MyBooksPageComponent } from './my-books-page/my-books-page.component';
 import { ModifyPageComponent } from './modify-page/modify-page.component';
 import { RoutingModule } from './routing/routing.module';
+import { FormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MyBookTileComponent, DeleteDialog, ServicesDialog } from './my-book-tile/my-book-tile.component';
+
 
 @NgModule({
   declarations: [
@@ -32,9 +37,18 @@ import { RoutingModule } from './routing/routing.module';
     HomePagePlaceholderComponent,
     MyBooksPageComponent,
     ModifyPageComponent,
+    BookDialog,
+    DeleteDialog,
+    ServicesDialog,
+    MyBookTileComponent
+  ],
+  entryComponents: [
+    BookDialog,
+    DeleteDialog,
+    ServicesDialog
   ],
   imports: [
-    RoutingModule,
+    MatDialogModule,
     MatGridListModule,
     MatCardModule,
     MatListModule,
@@ -44,6 +58,10 @@ import { RoutingModule } from './routing/routing.module';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
+    MatCheckboxModule,
+    
+    FormsModule,
+    RoutingModule,
     NgbModule,
     BrowserModule,
     BrowserAnimationsModule,

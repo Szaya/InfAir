@@ -22,16 +22,26 @@ export class SearchHeadComponent implements OnInit {
   ];
 
   actualParam: SearchParam;
+  searchValue: string;
 
   search() {
+    if (this.actualParam == "startpoint")
+    
     console.log(this.actualParam);
-  }
-  triggerSearchBy(value){
-    this.actualParam = value;
-    console.log(value);
+    console.log(this.searchValue);
   }
 
-  constructor() { }
+  searchUpdate(event) {
+    this.searchValue = event.target.value;
+  }
+  selected(event) {
+    this.actualParam = event.value;
+  }
+
+  constructor() { 
+    this.actualParam = null;
+    this.searchValue = null;
+  }
 
   ngOnInit() {
   }
