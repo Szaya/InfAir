@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <mat-form-field>
+        <mat-label>Search By</mat-label>
+        <mat-select>
+            <mat-option 
+                *ngFor="let searchParam of searchParams" 
+                [value]="searchParam.value">
+                    {{searchParam.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Search for" value="">
+        </mat-form-field>
+    </form>
+
+    <button mat-raised-button color="accent" (click)="search()">Search</button>
+
+</mat-toolbar>
