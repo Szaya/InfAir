@@ -4,8 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BookPageComponent } from '../book-page/book-page.component';
 import { MyBooksPageComponent } from '../my-books-page/my-books-page.component';
-import { HomePagePlaceholderComponent } from '../home-page-placeholder/home-page-placeholder.component';
 import { ModifyPageComponent } from '../modify-page/modify-page.component';
+import { ModifyPageComponent } from '../modify-page/modify-page.component';
+import {HomepageComponent} from "../homepage/homepage.component";
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'flights',
-    component: HomePagePlaceholderComponent
+    component: HomepageComponent
   },
   {
     path: 'flights/books',

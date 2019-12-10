@@ -1,0 +1,25 @@
+.example-form {
+  position: relative;
+  bottom: 0;
+
+  height: 60px;
+  line-height: 60px;
+  color: white;
+  font-style:italic;
+  font-weight: bold;
+  background-color: #B05FE9;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.oldalt{
+  position: relative;
+  bottom: 30px;
+  width:60px;
+  line-height: 0px;
+  left: 70%;
+  color: white;
+  font-style:italic;
+  font-weight: bold;
+
+
+}
