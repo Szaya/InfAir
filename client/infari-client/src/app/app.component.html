@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <ng-container
+    *ngIf="authService.isLoggedIn">
+      <button mat-button routerLink="flights">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <mat-icon>home</mat-icon>
+        InfAir
+      </button>
+      <button 
+        mat-button 
+        routerLink="flights/books"
+        *appRole="[UserRole.User]"
+      >
+        Book
+      </button>
+      <button 
+        mat-button 
+        routerLink="flights/myBooks"
+        *appRole="[UserRole.User]"
+      >
+        My Books
+      </button>
+      <button 
+        mat-button 
+        routerLink="flights/modify"
+        *appRole="[UserRole.Admin, UserRole.Operator]"
+      >
+          Modify
+      </button>
+      <button 
+        mat-button 
+        (click)="authService.logout()"
+      >
+        Logout
+      </button>
+  </ng-container>
+  <ng-container
+    *ngIf="!authService.isLoggedIn"
+  >
+    <button mat-button routerLink="/login">Login</button>
+  </ng-container>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

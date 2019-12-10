@@ -1,0 +1,47 @@
+<div style="min-width: 500px;">
+        <div *ngIf="flight && extraService">
+            <mat-grid-list cols="3" gutterSize ="0px" rowHeight="2:1">
+                <div>
+                    <mat-grid-tile
+                        [style.background]="'Gray'">
+                        <mat-list color="Primary">
+                            <mat-list-item>{{flight.startpoint}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>{{flight.startpoint}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>{{flight.launch}}</mat-list-item>
+                            <mat-divider></mat-divider>
+                            <mat-list-item>{{flight.arrival}}</mat-list-item>
+                        </mat-list>
+                    </mat-grid-tile>
+                </div>
+                <div>
+                    <mat-grid-tile
+                        [style.background]="'Gray'">
+                            {{flight.cost}}
+                            {{flight.sale}}
+                    </mat-grid-tile>
+                </div>
+
+                <div>
+                    <mat-grid-tile
+                    [style.background]="'Gray'">
+                        <mat-checkbox class="example-margin" [disabled]="true" [(ngModel)]="extraService.specialseat">Special seat</mat-checkbox>
+                        <mat-checkbox class="example-margin" [disabled]="true" [(ngModel)]="extraService.nexttowindow">Next to window</mat-checkbox>
+                        <mat-checkbox class="example-margin" [disabled]="true" [(ngModel)]="extraService.biggerfootspace">Bigger foot space</mat-checkbox>
+                        <mat-checkbox class="example-margin" [disabled]="true" [(ngModel)]="extraService.extrasuitecase">Extra suitecase</mat-checkbox>
+                        <mat-checkbox class="example-margin" [disabled]="true" [(ngModel)]="extraService.bagcar">Bagcar</mat-checkbox>
+                    </mat-grid-tile>
+                </div>
+
+                <div>
+                    <mat-grid-tile
+                        [colspan]="3"
+                        [style.background]="'Gray'">
+                        <button mat-raised-button color="accent" (click)="showServiceDialog()">Modify Services</button>
+                        <button mat-raised-button color="warn" (click)="showDeleteDialog()">Delete</button>
+                    </mat-grid-tile>
+                </div>
+            </mat-grid-list>
+        </div>
+    </div>

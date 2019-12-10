@@ -1,0 +1,11 @@
+<div>
+  <div *ngIf="flights">
+    <mat-grid-list cols="2" rowHeight="200px">
+      <mat-grid-tile *ngFor="let flight of flights">
+        <div>  
+          <app-search-result-tile [value]="flight"></app-search-result-tile>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

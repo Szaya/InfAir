@@ -1,0 +1,23 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SearchResultListComponent } from '../search-result-list/search-result-list.component';
+import {SearchDetails} from '../search-head/search-head.component'
+
+@Component({
+  selector: 'app-book-page',
+  templateUrl: './book-page.component.html',
+  styleUrls: ['./book-page.component.css']
+})
+export class BookPageComponent implements OnInit {
+  @ViewChild(SearchResultListComponent, {static: false}) child: SearchResultListComponent ; 
+
+  constructor() { 
+  }
+
+  ngOnInit() {
+  }
+
+  searchDetailsChanged(event: SearchDetails) {
+    this.child.searchChanged (event.searchBy, event.searchFor);
+  }
+
+}
