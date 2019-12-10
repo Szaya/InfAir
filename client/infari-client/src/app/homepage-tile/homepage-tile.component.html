@@ -1,31 +1,28 @@
-<div style="width: 400px">
+<div style="width: 600px">
   <div *ngIf="flight">
     <mat-grid-list cols="2" gutterSize ="0px" rowHeight="1:1" >
       <div>
         <mat-grid-tile
           [style.background]="'#f7cdf8'">
           <mat-list color="Primary">
-            <mat-list-item>{{flight.startpoint}}</mat-list-item>
+            <mat-list-item>Startpoint: {{flight.startpoint}}</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>{{flight.endpoint}}</mat-list-item>
+            <mat-list-item>Endpoint: {{flight.endpoint}}</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>{{flight.launch}}</mat-list-item>
+            <mat-list-item>Launch: {{flight.launch}}</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>{{flight.arrival}}</mat-list-item>
+            <mat-list-item>Arrival: {{flight.arrival}}</mat-list-item>
           </mat-list>
         </mat-grid-tile>
       </div>
       <div>
         <mat-grid-tile
           [style.background]="'#f7cdf8'">
-          {{flight.startpoint}}
-        </mat-grid-tile>
-      </div>
-      <div>
-        <mat-grid-tile
-          [colspan]="2"
-          [style.background]="'#f7cdf8'">
-          <button mat-raised-button color="accent">Book</button>
+          <mat-list color="Primary">
+            <mat-list-item>Cost: {{flight.cost}}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Sale: {{flight.sale}}</mat-list-item>
+          </mat-list>
         </mat-grid-tile>
       </div>
     </mat-grid-list>
