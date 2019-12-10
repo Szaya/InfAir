@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { BookPageComponent } from '../book-page/book-page.component';
 import { MyBooksPageComponent } from '../my-books-page/my-books-page.component';
-import { ModifyPageComponent } from '../modify-page/modify-page.component';
-import { ModifyPageComponent } from '../modify-page/modify-page.component';
 import {HomepageComponent} from "../homepage/homepage.component";
 
 const routes: Routes = [
@@ -25,10 +23,6 @@ const routes: Routes = [
   {
     path: 'flights/myBooks',
     component: MyBooksPageComponent
-  },
-  {
-    path: 'flights/modify',
-    component: ModifyPageComponent
   },
 ];
 

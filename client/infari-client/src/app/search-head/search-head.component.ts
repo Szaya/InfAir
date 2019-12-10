@@ -5,6 +5,11 @@ export interface SearchParam {
   viewValue: string;
 }
 
+export interface SearchDetails {
+  searchBy: string;
+  searchFor: string;
+}
+
 @Component({
   selector: 'app-search-head',
   templateUrl: './search-head.component.html',
@@ -13,7 +18,7 @@ export interface SearchParam {
 
 export class SearchHeadComponent implements OnInit {
 
-  @Output() dataChange: EventEmitter<string, string> = new EventEmitter<string, string>();
+  @Output() dataChange: EventEmitter<SearchDetails> = new EventEmitter<SearchDetails>();
 
   searchParams: SearchParam[] = [
     {value: 'startpoint', viewValue: 'Startpoint'},
@@ -29,7 +34,7 @@ export class SearchHeadComponent implements OnInit {
 
   search() {
     this.dataChange.emit({
-      searchBy: this.actualParam,
+      searchBy: this.actualParam.value,
       searchFor: this.searchValue
     });
   }

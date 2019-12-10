@@ -7,7 +7,7 @@ import { SearchResultListComponent } from '../search-result-list/search-result-l
   styleUrls: ['./book-page.component.css']
 })
 export class BookPageComponent implements OnInit {
-  @ViewChild(SearchResultListComponent ) child: SearchResultListComponent ; 
+  @ViewChild(SearchResultListComponent, {static: false} ) child: SearchResultListComponent ;
 
   constructor() { 
   }

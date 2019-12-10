@@ -18,7 +18,6 @@ import { FlightService } from './flight.service';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { SearchResultTileComponent, BookDialog } from './search-result-tile/search-result-tile.component';
 import { MyBooksPageComponent } from './my-books-page/my-books-page.component';
-import { ModifyPageComponent } from './modify-page/modify-page.component';
 import { RoutingModule } from './routing/routing.module';
 import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -38,7 +37,6 @@ import { HomepageTileComponent } from './homepage-tile/homepage-tile.component';
     SearchResultListComponent,
     SearchResultTileComponent,
     MyBooksPageComponent,
-    ModifyPageComponent,
     BookDialog,
     DeleteDialog,
     ServicesDialog,
