@@ -3,10 +3,10 @@
       <mat-grid-list cols="2" rowHeight="200px">
         <mat-grid-tile *ngFor="let book of books">
           <div>  
-                <app-my-book-tile 
-                    [book] = book
-                    (deleteBook)="deleteBook($event)">
-                </app-my-book-tile>
+            <app-my-book-tile 
+                [book] = book
+                (deleteBook)="deleteBook($event)">
+            </app-my-book-tile>
         </div>
         </mat-grid-tile>
       </mat-grid-list>

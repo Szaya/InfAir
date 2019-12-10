@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 export interface SearchParam {
   value: string;
@@ -12,6 +12,9 @@ export interface SearchParam {
 })
 
 export class SearchHeadComponent implements OnInit {
+
+  @Output() dataChange: EventEmitter<string, string> = new EventEmitter<string, string>();
+
   searchParams: SearchParam[] = [
     {value: 'startpoint', viewValue: 'Startpoint'},
     {value: 'endpoint', viewValue: 'Endpoint'},
@@ -21,14 +24,14 @@ export class SearchHeadComponent implements OnInit {
     {value: 'sale', viewValue: 'Sale'}
   ];
 
-  actualParam: SearchParam;
-  searchValue: string;
+  actualParam: SearchParam = null;
+  searchValue: string = null;
 
   search() {
-    if (this.actualParam == "startpoint")
-    
-    console.log(this.actualParam);
-    console.log(this.searchValue);
+    this.dataChange.emit({
+      searchBy: this.actualParam,
+      searchFor: this.searchValue
+    });
   }
 
   searchUpdate(event) {

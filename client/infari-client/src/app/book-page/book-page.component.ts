@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SearchResultListComponent } from '../search-result-list/search-result-list.component';
 
 @Component({
   selector: 'app-book-page',
@@ -6,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-page.component.css']
 })
 export class BookPageComponent implements OnInit {
-  constructor() { }
+  @ViewChild(SearchResultListComponent ) child: SearchResultListComponent ; 
+
+  constructor() { 
+  }
 
   ngOnInit() {
+  }
+
+  searchDetailsChanged(event) {
+    this.child.searchChanged (event.searchBy, event.searchFor);
   }
 
 }
