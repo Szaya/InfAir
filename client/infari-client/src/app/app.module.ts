@@ -28,7 +28,6 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HomepageListComponent } from './homepage-list/homepage-list.component';
 import { HomepageTileComponent } from './homepage-tile/homepage-tile.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
